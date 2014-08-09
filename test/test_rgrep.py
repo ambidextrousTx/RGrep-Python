@@ -11,5 +11,8 @@ class TestRGrep(unittest.TestCase):
     def test_grep_pattern_text(self):
         self.assertEquals(rgrep('hello', 'hello'), True)
 
+    def test_grep_pattern_in_text(self):
+        self.assertEquals(rgrep('hello', 'hello world'), True)
+
 if __name__ == '__main__':
     unittest.main()
