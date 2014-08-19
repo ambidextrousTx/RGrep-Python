@@ -17,5 +17,8 @@ class TestRGrep(unittest.TestCase):
     def test_case_insensitive(self):
         self.assertEquals(rgrep('hello', 'HELLO', 'i'), True)
 
+    def test_count(self):
+        self.assertEquals(rgrep('hello', 'hello\nhello', count=True), 2)
+
 if __name__ == '__main__':
     unittest.main()
