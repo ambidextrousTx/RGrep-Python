@@ -14,5 +14,8 @@ class TestRGrep(unittest.TestCase):
     def test_grep_pattern_in_text(self):
         self.assertEquals(rgrep('hello', 'hello world'), True)
 
+    def test_case_insensitive(self):
+        self.assertEquals(rgrep('hello', 'HELLO', 'i'), True)
+
 if __name__ == '__main__':
     unittest.main()
