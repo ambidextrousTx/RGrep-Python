@@ -4,9 +4,6 @@ def display_usage():
 
 
 def rgrep(pattern='', text='', case='', count=False, version=False):
-    if version:
-        return 'RGrep (BSD) 0.0.1'
-
     if pattern == '' or text == '':
         return display_usage()
     elif not count:
@@ -22,3 +19,8 @@ def rgrep(pattern='', text='', case='', count=False, version=False):
             if pattern in line:
                 count += 1
         return count
+
+
+class RGrep(object):
+    def __init__(self):
+        self.version = 'RGrep (BSD) 0.0.1'
