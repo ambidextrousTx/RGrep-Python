@@ -3,17 +3,6 @@ def display_usage():
            'same as grep\n'
 
 
-def rgrep(pattern='', text='', case='', count=False, version=False):
-    if pattern == '' or text == '':
-        return display_usage()
-    elif not count:
-        if case == 'i':
-            pattern = pattern.lower()
-            text = text.lower()
-
-        return pattern in text
-
-
 class RGrep(object):
     def __init__(self):
         self.version = 'RGrep (BSD) 0.0.1'
@@ -32,3 +21,11 @@ class RGrep(object):
             if self.pattern in line:
                 count += 1
         return count
+
+    def get_match(self):
+        return self.pattern in self.text
+
+    def get_match_case_insensitive(self):
+        self.pattern = self.pattern.lower()
+        self.text = self.text.lower()
+        return self.get_match()
