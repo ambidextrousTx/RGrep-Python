@@ -12,22 +12,23 @@ def rgrep(pattern='', text='', case='', count=False, version=False):
             text = text.lower()
 
         return pattern in text
-    else:
-        count = 0
-        text = text.split('\n')
-        for line in text:
-            if pattern in line:
-                count += 1
-        return count
 
 
 class RGrep(object):
     def __init__(self):
         self.version = 'RGrep (BSD) 0.0.1'
         self.count = False
-        self.version = False
         self.pattern = ''
         self.text = ''
         self.case = ''
 
-    def grep(self, kk)
+    def get_version(self):
+        return self.version
+
+    def get_count(self):
+        count = 0
+        text = self.text.split('\n')
+        for line in text:
+            if self.pattern in line:
+                count += 1
+        return count
