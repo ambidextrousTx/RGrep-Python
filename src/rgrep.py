@@ -1,8 +1,8 @@
 class RGrep(object):
-    def __init__(self, ):
+    def __init__(self, pattern='', text=''):
         self.version = 'RGrep (BSD) 0.0.1'
-        self.pattern = ''
-        self.text = ''
+        self.pattern = pattern
+        self.text = text
 
     @classmethod
     def display_usage(self):

@@ -11,11 +11,12 @@ class TestRGrep(unittest.TestCase):
                           'are the same as grep\n')
 
     def test_grep_pattern_text(self):
-        rgrep = RGrep()
-        self.assertEquals(rgrep('hello', 'hello'), True)
+        rgrep = RGrep('hello', 'hello')
+        self.assertEquals(rgrep.get_match(), True)
 
     def test_grep_pattern_in_text(self):
-        self.assertEquals(rgrep('hello', 'hello world'), True)
+        rgrep = RGrep('hello', 'hello world')
+        self.assertEquals(rgrep.get_match(), True)
 
     def test_case_insensitive(self):
         self.assertEquals(rgrep('hello', 'HELLO', 'i'), True)
