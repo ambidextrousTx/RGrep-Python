@@ -27,8 +27,7 @@ class TestRGrep(unittest.TestCase):
         self.assertEquals(rgrep.get_count(), 3)
 
     def test_version_information(self):
-        rgrep = RGrep()
-        self.assertEquals(rgrep.get_version(), 'RGrep (BSD) 0.0.1')
+        self.assertEquals(RGrep.get_version(), 'RGrep (BSD) 0.0.1')
 
 
 if __name__ == '__main__':

@@ -1,6 +1,5 @@
 class RGrep(object):
     def __init__(self, pattern='', text=''):
-        self.version = 'RGrep (BSD) 0.0.1'
         self.pattern = pattern
         self.text = text
 
@@ -9,8 +8,9 @@ class RGrep(object):
         return 'Usage: python rgrep [options] pattern files\nThe options are the '\
             'same as grep\n'
 
+    @classmethod
     def get_version(self):
-        return self.version
+        return 'RGrep (BSD) 0.0.1'
 
     def get_count(self):
         count = 0
