@@ -19,13 +19,16 @@ class TestRGrep(unittest.TestCase):
         self.assertEquals(rgrep.get_match(), True)
 
     def test_case_insensitive(self):
-        self.assertEquals(rgrep('hello', 'HELLO', 'i'), True)
+        rgrep = RGrep('hello', 'HELLO')
+        self.assertEquals(rgrep.get_match_case_insensitive(), True)
 
     def test_count(self):
-        self.assertEquals(rgrep('hello', 'hello\nhello', count=True), 2)
+        rgrep = RGrep('hello', 'hello\nhello\nhello')
+        self.assertEquals(rgrep.get_count(), 3)
 
     def test_version_information(self):
-        self.assertEquals(rgrep('', '', version=True), 'RGrep (BSD) 0.0.1')
+        rgrep = RGrep()
+        self.assertEquals(rgrep.get_version(), 'RGrep (BSD) 0.0.1')
 
 
 if __name__ == '__main__':
