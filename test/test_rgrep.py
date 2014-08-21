@@ -11,6 +11,7 @@ class TestRGrep(unittest.TestCase):
                           'are the same as grep\n')
 
     def test_grep_pattern_text(self):
+        rgrep = RGrep()
         self.assertEquals(rgrep('hello', 'hello'), True)
 
     def test_grep_pattern_in_text(self):
