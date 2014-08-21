@@ -4,12 +4,12 @@ class RGrep(object):
         self.text = text
 
     @classmethod
-    def display_usage(self):
+    def display_usage(cls):
         return 'Usage: python rgrep [options] pattern files\nThe options are the '\
             'same as grep\n'
 
     @classmethod
-    def get_version(self):
+    def get_version(cls):
         return 'RGrep (BSD) 0.0.1'
 
     def get_count(self):
