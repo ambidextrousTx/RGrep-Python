@@ -24,3 +24,10 @@ def rgrep(pattern='', text='', case='', count=False, version=False):
 class RGrep(object):
     def __init__(self):
         self.version = 'RGrep (BSD) 0.0.1'
+        self.count = False
+        self.version = False
+        self.pattern = ''
+        self.text = ''
+        self.case = ''
+
+    def grep(self, kk)

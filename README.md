@@ -1,8 +1,7 @@
 # rgrep
 
-A Python library designed to clone some functionality from the Grep command
-
-Also emphasizing TDD
+A Python library designed to clone some functionality from the Grep command.
+An object-oriented Grep implementation, built using TDD.
 
 ## Usage
 
