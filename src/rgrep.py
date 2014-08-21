@@ -1,6 +1,3 @@
-def display_usage():
-    return 'Usage: python rgrep [options] pattern files\nThe options are the '\
-           'same as grep\n'
 
 
 class RGrep(object):
@@ -10,6 +7,11 @@ class RGrep(object):
         self.pattern = ''
         self.text = ''
         self.case = ''
+
+    @classmethod
+    def display_usage(self):
+        return 'Usage: python rgrep [options] pattern files\nThe options are the '\
+            'same as grep\n'
 
     def get_version(self):
         return self.version
