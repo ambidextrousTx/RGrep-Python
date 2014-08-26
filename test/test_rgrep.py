@@ -29,6 +29,10 @@ class TestRGrep(unittest.TestCase):
     def test_version_information(self):
         self.assertEquals(RGrep.get_version(), 'RGrep (BSD) 0.0.1')
 
+    def test_inverted_match(self):
+        rgrep = RGrep('hello', 'hello\nworld\nhello')
+        self.assertEquals(rgrep.get_match_inverted(), True)
+
 
 if __name__ == '__main__':
     unittest.main()

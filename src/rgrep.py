@@ -27,3 +27,13 @@ class RGrep(object):
         self.pattern = self.pattern.lower()
         self.text = self.text.lower()
         return self.get_match()
+
+    def get_match_inverted(self):
+        ''' For now, just return true or false.
+        Behavior to change later.
+        '''
+        text = self.text.split('\n')
+        for line in text:
+            if self.pattern not in line:
+                return True
+        return False
