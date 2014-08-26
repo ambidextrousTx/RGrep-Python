@@ -31,7 +31,7 @@ class TestRGrep(unittest.TestCase):
 
     def test_inverted_match(self):
         rgrep = RGrep('hello', 'hello\nworld\nhello')
-        self.assertEquals(rgrep.get_match_inverted(), True)
+        self.assertEquals(rgrep.get_match_inverted().next(), 'world')
 
 
 if __name__ == '__main__':
