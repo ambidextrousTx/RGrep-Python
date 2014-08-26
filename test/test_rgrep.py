@@ -33,6 +33,10 @@ class TestRGrep(unittest.TestCase):
         rgrep = RGrep('hello', 'hello\nworld\nhello')
         self.assertEquals(rgrep.get_match_inverted().next(), 'world')
 
+    def test_quiet_mode(self):
+        rgrep = RGrep('hello', 'hello\nhello\nhello')
+        self.assertEquals(rgrep.get_quiet_match(), True)
+
 
 if __name__ == '__main__':
     unittest.main()

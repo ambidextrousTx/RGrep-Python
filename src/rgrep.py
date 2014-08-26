@@ -36,3 +36,12 @@ class RGrep(object):
         for line in text:
             if self.pattern not in line:
                 yield line
+
+    def get_quiet_match(self):
+        ''' Returns true as soon as a first match is found.
+        '''
+        text = self.text.split('\n')
+        for line in text:
+            if self.pattern in line:
+                return True
+        return False
