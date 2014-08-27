@@ -37,6 +37,10 @@ class TestRGrep(unittest.TestCase):
         rgrep = RGrep('hello', 'hello\nhello\nhello')
         self.assertEquals(rgrep.get_quiet_match(), True)
 
+    def test_max_count(self):
+        rgrep = RGrep('hello', 'hello\nworld\nhello')
+        self.assertEquals(rgrep.get_match_maxcount(1), 1)
+
 
 if __name__ == '__main__':
     unittest.main()

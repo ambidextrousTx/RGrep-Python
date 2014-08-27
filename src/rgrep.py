@@ -45,3 +45,17 @@ class RGrep(object):
             if self.pattern in line:
                 return True
         return False
+
+    def get_match_maxcount(self, m):
+        ''' Stop matching after a certain count
+        Returns the match count for now.
+        Behavior might change later.
+        '''
+        count = 0
+        text = self.text.split('\n')
+        for line in text:
+            if self.pattern in line:
+                count += 1
+                if count == m:
+                    break
+        return count
