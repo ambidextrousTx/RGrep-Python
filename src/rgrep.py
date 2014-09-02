@@ -59,3 +59,19 @@ class RGrep(object):
                 if count == m:
                     break
         return count
+
+    def get_line_numbers(self):
+        ''' Return a list of line numbers where the
+        match is found. For now, implemented to work with
+        a newline-separated string as the text. Behavior
+        will change to incorporate files.
+        '''
+        lines = []
+        count = 0
+        text = self.text.split('\n')
+        for line in text:
+            count += 1
+            if self.pattern in line:
+                lines.append(count)
+
+        return lines

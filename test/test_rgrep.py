@@ -41,6 +41,10 @@ class TestRGrep(unittest.TestCase):
         rgrep = RGrep('hello', 'hello\nworld\nhello')
         self.assertEquals(rgrep.get_match_maxcount(1), 1)
 
+    def test_line_numbers(self):
+        rgrep = RGrep('hello', 'hello\nworld\nhello')
+        self.assertEquals(rgrep.get_line_numbers(), [1, 3])
+
 
 if __name__ == '__main__':
     unittest.main()
