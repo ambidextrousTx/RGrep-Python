@@ -5,11 +5,10 @@ An object-oriented Grep implementation, built using TDD.
 
 ## Usage
 
-FIXME
+Currently implemented in an object-oriented way as a set of methods. Future
+plan to enable command line execution.
 
 ## License
 
 Copyright © 2014 
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
