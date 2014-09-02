@@ -37,6 +37,10 @@ class TestRGrep(unittest.TestCase):
         rgrep = RGrep('hello', 'hello\nhello\nhello')
         self.assertEquals(rgrep.get_quiet_match(), True)
 
+    def test_quiet_mode_neg(self):
+        rgrep = RGrep('hello', 'this will not match')
+        self.assertEquals(rgrep.get_quiet_match(), False)
+
     def test_max_count(self):
         rgrep = RGrep('hello', 'hello\nworld\nhello')
         self.assertEquals(rgrep.get_match_maxcount(1), 1)
@@ -44,6 +48,10 @@ class TestRGrep(unittest.TestCase):
     def test_line_numbers(self):
         rgrep = RGrep('hello', 'hello\nworld\nhello')
         self.assertEquals(rgrep.get_line_numbers(), [1, 3])
+
+    def test_single_line_number(self):
+        rgrep = RGrep('hello', 'hello')
+        self.assertEquals(rgrep.get_line_numbers(), [1])
 
 
 if __name__ == '__main__':
