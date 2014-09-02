@@ -32,10 +32,13 @@ class RGrep(object):
         ''' Outputs all lines that inverse-match.
         Behavior might change later.
         '''
+        vmatches = []
         text = self.text.split('\n')
         for line in text:
             if self.pattern not in line:
-                yield line
+                vmatches.append(line)
+
+        return vmatches
 
     def get_quiet_match(self):
         ''' Returns true as soon as a first match is found.

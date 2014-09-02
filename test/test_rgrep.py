@@ -31,7 +31,11 @@ class TestRGrep(unittest.TestCase):
 
     def test_inverted_match(self):
         rgrep = RGrep('hello', 'hello\nworld\nhello')
-        self.assertEquals(rgrep.get_match_inverted().next(), 'world')
+        self.assertEquals(rgrep.get_match_inverted(), ['world'])
+
+    def test_inverted_match_multiple(self):
+        rgrep = RGrep('hello', 'hello\nworld\nhello\nworld')
+        self.assertEquals(rgrep.get_match_inverted(), ['world', 'world'])
 
     def test_quiet_mode(self):
         rgrep = RGrep('hello', 'hello\nhello\nhello')
