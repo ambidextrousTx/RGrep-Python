@@ -47,7 +47,14 @@ class TestRGrep(unittest.TestCase):
 
     def test_max_count(self):
         rgrep = RGrep('hello', 'hello\nworld\nhello')
-        self.assertEquals(rgrep.get_match_maxcount(1), 1)
+        self.assertTrue(rgrep.get_match_maxcount(1) >= 1)
+
+    def test_max_count_less_than(self):
+        ''' Test the max_count paradigm if the actual number of matches
+        is less than the number desired
+        '''
+        rgrep = RGrep('hello', 'hello\nworld\nhello')
+        self.assertTrue(rgrep.get_match_maxcount(3) >= 2)
 
     def test_line_numbers(self):
         rgrep = RGrep('hello', 'hello\nworld\nhello')
