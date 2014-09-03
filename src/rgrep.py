@@ -78,3 +78,11 @@ class RGrep(object):
                 lines.append(count)
 
         return lines
+
+    def get_only_matching_parts(self):
+        matches = []
+        for text_elem in self.text.split('\n'):
+            if self.pattern in text_elem:
+                matches.append(self.pattern)
+
+        return matches

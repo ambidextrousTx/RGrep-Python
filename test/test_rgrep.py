@@ -64,6 +64,14 @@ class TestRGrep(unittest.TestCase):
         rgrep = RGrep('hello', 'hello')
         self.assertEquals(rgrep.get_line_numbers(), [1])
 
+    def test_only_matching_parts(self):
+        rgrep = RGrep('hello', 'helloworld')
+        self.assertEquals(rgrep.get_only_matching_parts(), ['hello'])
+
+    def test_only_matching_parts_multiple(self):
+        rgrep = RGrep('hello', 'helloworld\nhellothere')
+        self.assertEquals(rgrep.get_only_matching_parts(), ['hello', 'hello'])
+
 
 if __name__ == '__main__':
     unittest.main()
