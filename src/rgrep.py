@@ -1,7 +1,11 @@
+import os
+
+
 class RGrep(object):
-    def __init__(self, pattern='', text=''):
+    def __init__(self, pattern='', text='', filepath=''):
         self.pattern = pattern
         self.text = text
+        self.filepath = filepath
 
     @classmethod
     def display_usage(cls):
@@ -86,3 +90,13 @@ class RGrep(object):
                 matches.append(self.pattern)
 
         return matches
+
+    def match_in_files(self):
+        files = os.listdir(self.filepath)
+        for f in files:
+            with open(f, 'r') as fhi:
+                content = open(f).read()
+                if self.pattern in content:
+                    return True
+
+        return False
