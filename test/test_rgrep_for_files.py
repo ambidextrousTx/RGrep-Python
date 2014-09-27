@@ -16,5 +16,10 @@ class TestRGrepFiles(unittest.TestCase):
         rgrep = RGrep(pattern='hello', filepath='./')
         self.assertEqual(rgrep.match_in_files(), True)
 
+    def test_exact_match_in_files(self):
+        rgrep = RGrep(pattern='hello', filepath='./')
+        self.assertEqual(rgrep.exact_match_in_files(), True)
+
+
 if __name__ == '__main__':
     unittest.main()

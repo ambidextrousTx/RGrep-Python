@@ -100,3 +100,14 @@ class RGrep(object):
                     return True
 
         return False
+
+    def exact_match_in_files(self):
+        files = os.listdir(self.filepath)
+        for f in files:
+            with open(f, 'r') as fhi:
+                content = open(f).readlines()
+                for content_line in content:
+                    if self.pattern == content_line.strip():
+                        return True
+
+        return False
