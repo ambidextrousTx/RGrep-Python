@@ -14,6 +14,12 @@ class TestRGrep(unittest.TestCase):
         rgrep = RGrep('hello', 'hello')
         self.assertEquals(rgrep.get_match(), True)
 
+    def test_exact_match(self):
+        rgrep = RGrep('hello', 'hello')
+        self.assertEquals(rgrep.get_exact_match(), True)
+        rgrep = RGrep('hello', 'hello world')
+        self.assertNotEqual(rgrep.get_exact_match(), True)
+
     def test_grep_pattern_in_text(self):
         rgrep = RGrep('hello', 'hello world')
         self.assertEquals(rgrep.get_match(), True)

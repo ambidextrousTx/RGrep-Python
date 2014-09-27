@@ -24,6 +24,9 @@ class RGrep(object):
                 count += 1
         return count
 
+    def get_exact_match(self):
+        return self.pattern == self.text
+
     def get_match(self, other_text=''):
         if other_text == '':
             return self.pattern in self.text
