@@ -24,8 +24,11 @@ class RGrep(object):
                 count += 1
         return count
 
-    def get_match(self):
-        return self.pattern in self.text
+    def get_match(self, other_text=''):
+        if other_text == '':
+            return self.pattern in self.text
+        else:
+            return self.pattern in other_text
 
     def get_match_case_insensitive(self):
         self.pattern = self.pattern.lower()
@@ -96,10 +99,7 @@ class RGrep(object):
         for f in files:
             with open(f, 'r') as fhi:
                 content = open(f).read()
-                if self.pattern in content:
-                    return True
-
-        return False
+                return self.get_match(other_text=content)
 
     def exact_match_in_files(self):
         files = os.listdir(self.filepath)
