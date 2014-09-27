@@ -24,8 +24,11 @@ class RGrep(object):
                 count += 1
         return count
 
-    def get_exact_match(self):
-        return self.pattern == self.text
+    def get_exact_match(self, other_text=''):
+        if other_text == '':
+            return self.pattern == self.text
+        else:
+            return self.pattern == other_text
 
     def get_match(self, other_text=''):
         if other_text == '':
@@ -110,7 +113,7 @@ class RGrep(object):
             with open(f, 'r') as fhi:
                 content = open(f).readlines()
                 for content_line in content:
-                    if self.pattern == content_line.strip():
+                    if self.get_exact_match(other_text=content_line.strip()):
                         return True
 
         return False
