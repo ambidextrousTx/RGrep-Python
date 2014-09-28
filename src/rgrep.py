@@ -36,10 +36,14 @@ class RGrep(object):
         else:
             return self.pattern in other_text
 
-    def get_match_case_insensitive(self):
+    def get_match_case_insensitive(self, other_text=''):
         self.pattern = self.pattern.lower()
-        self.text = self.text.lower()
-        return self.get_match()
+
+        if other_text == '':
+            self.text = self.text.lower()
+            return self.get_match()
+        else:
+            return self.get_match(other_text=other_text.lower())
 
     def get_match_inverted(self):
         ''' Outputs all lines that inverse-match.
@@ -117,3 +121,10 @@ class RGrep(object):
                         return True
 
         return False
+
+    def match_case_insensitive_in_files(self):
+        files = os.listdir(self.filepath)
+        for f in files:
+            with open(f, 'r') as fhi:
+                content = open(f).read()
+                return self.get_match_case_insensitive(other_text=content)
