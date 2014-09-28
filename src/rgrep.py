@@ -105,11 +105,7 @@ class RGrep(object):
         return matches
 
     def match_in_files(self):
-        files = os.listdir(self.filepath)
-        for f in files:
-            with open(f, 'r') as fhi:
-                content = open(f).read()
-                return self.get_match(other_text=content)
+        return self.handle_files(self.get_match)
 
     def exact_match_in_files(self):
         files = os.listdir(self.filepath)
@@ -123,8 +119,11 @@ class RGrep(object):
         return False
 
     def match_case_insensitive_in_files(self):
+        return self.handle_files(self.get_match_case_insensitive)
+
+    def handle_files(self, function):
         files = os.listdir(self.filepath)
         for f in files:
             with open(f, 'r') as fhi:
                 content = open(f).read()
-                return self.get_match_case_insensitive(other_text=content)
+                return function(other_text=content)
