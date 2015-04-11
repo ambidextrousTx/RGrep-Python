@@ -1,4 +1,5 @@
 import os
+import sys
 
 
 class RGrep(object):
@@ -127,3 +128,10 @@ class RGrep(object):
             with open(f, 'r') as fhi:
                 content = open(f).read()
                 return function(other_text=content)
+
+def main(args):
+    if len(args) < 2:
+    	print RGrep.display_usage()
+
+if __name__ == '__main__':
+    main(sys.argv)
