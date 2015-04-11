@@ -1,8 +1,18 @@
+'''
+Grep implemented in Python
+'''
+
 import os
 import sys
+import argparse
 
 
 class RGrep(object):
+    ''' Class that represents a grep object.
+    Contains all required methods to handle
+    special requests (most of the flags supported
+    by grep)
+    '''
     def __init__(self, pattern='', text='', filepath=''):
         self.pattern = pattern
         self.text = text
@@ -10,14 +20,17 @@ class RGrep(object):
 
     @classmethod
     def display_usage(cls):
-        return 'Usage: python rgrep [options] pattern files\nThe options are the '\
-            'same as grep\n'
+        ''' Display usage in case no arguments are provided '''
+        return 'Usage: python rgrep [options] pattern files\n' \
+                'The options are the same as grep\n'
 
     @classmethod
     def get_version(cls):
+        ''' Return the version '''
         return 'RGrep (BSD) 0.0.1'
 
     def get_count(self):
+        ''' Return the count of matches '''
         count = 0
         text = self.text.split('\n')
         for line in text:
@@ -26,18 +39,21 @@ class RGrep(object):
         return count
 
     def get_exact_match(self, other_text=''):
+        ''' Return if there is an exact match '''
         if other_text == '':
             return self.pattern == self.text
         else:
             return self.pattern == other_text
 
     def get_match(self, other_text=''):
+        ''' Return if there is a match, exact or not '''
         if other_text == '':
             return self.pattern in self.text
         else:
             return self.pattern in other_text
 
     def get_match_case_insensitive(self, other_text=''):
+        ''' Return if there is a case insensitive match '''
         self.pattern = self.pattern.lower()
 
         if other_text == '':
@@ -67,7 +83,7 @@ class RGrep(object):
                 return True
         return False
 
-    def get_match_maxcount(self, m):
+    def get_match_maxcount(self, max_count):
         ''' Stop matching after a certain count
         Returns the match count for now.
         Behavior might change later.
@@ -77,7 +93,7 @@ class RGrep(object):
         for line in text:
             if self.pattern in line:
                 count += 1
-                if count == m:
+                if count == max_count:
                     break
         return count
 
@@ -98,6 +114,7 @@ class RGrep(object):
         return lines
 
     def get_only_matching_parts(self):
+        ''' Get only parts that match '''
         matches = []
         for text_elem in self.text.split('\n'):
             if self.pattern in text_elem:
@@ -106,13 +123,15 @@ class RGrep(object):
         return matches
 
     def match_in_files(self):
+        ''' Return if there is a match in a file '''
         return self.handle_files(self.get_match)
 
     def exact_match_in_files(self):
+        ''' Return if there is an exact match in files '''
         files = os.listdir(self.filepath)
-        for f in files:
-            with open(f, 'r') as fhi:
-                content = open(f).readlines()
+        for one_file in files:
+            with open(one_file, 'r') as fhi:
+                content = fhi.readlines()
                 for content_line in content:
                     if self.get_exact_match(other_text=content_line.strip()):
                         return True
@@ -120,18 +139,21 @@ class RGrep(object):
         return False
 
     def match_case_insensitive_in_files(self):
+        ''' Return if there is a match in files irrespective of case '''
         return self.handle_files(self.get_match_case_insensitive)
 
     def handle_files(self, function):
+        ''' Handle grepping inside files '''
         files = os.listdir(self.filepath)
-        for f in files:
-            with open(f, 'r') as fhi:
-                content = open(f).read()
+        for one_file in files:
+            with open(one_file, 'r') as fhi:
+                content = fhi.read()
                 return function(other_text=content)
 
 def main(args):
+    ''' Main method for handling the flow when ran from the command line '''
     if len(args) < 2:
-    	print RGrep.display_usage()
+        print RGrep.display_usage()
 
 if __name__ == '__main__':
     main(sys.argv)
