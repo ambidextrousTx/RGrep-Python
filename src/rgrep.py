@@ -152,6 +152,9 @@ class RGrep(object):
 
 def main(args):
     ''' Main method for handling the flow when ran from the command line '''
+    parser = argparse.ArgumentParser()
+    parser.parse_args()
+
     if len(args) < 2:
         print RGrep.display_usage()
 
