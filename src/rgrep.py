@@ -153,10 +153,13 @@ class RGrep(object):
 def main(args):
     ''' Main method for handling the flow when ran from the command line '''
     parser = argparse.ArgumentParser()
-    parser.add_argument('usage', help='Display usage')
+    parser.add_argument('pattern', help='The pattern against which to search')
+    parser.add_argument('text', help='The text in which to search')
     args = parser.parse_args()
-    if args.usage:
-        print RGrep.display_usage()
+    if args.pattern:
+        print args.pattern
+    if args.text:
+        print args.text
 
 if __name__ == '__main__':
     main(sys.argv)
