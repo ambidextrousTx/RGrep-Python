@@ -156,10 +156,10 @@ def main(args):
     parser.add_argument('pattern', help='The pattern against which to search')
     parser.add_argument('text', help='The text in which to search')
     args = parser.parse_args()
-    if args.pattern:
-        print args.pattern
-    if args.text:
-        print args.text
+    if args.pattern and args.text:
+        rgrep = RGrep(args.pattern, args.text)
+        print rgrep.get_match()
+
 
 if __name__ == '__main__':
     main(sys.argv)
