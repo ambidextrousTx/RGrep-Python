@@ -155,10 +155,17 @@ def main(args):
     parser = argparse.ArgumentParser()
     parser.add_argument('pattern', help='The pattern against which to search')
     parser.add_argument('text', help='The text in which to search')
+    parser.add_argument('--count', help='Get the count of the matches',
+                        action='store_true')
     args = parser.parse_args()
+    rgrep = RGrep(args.pattern, args.text)
     if args.pattern and args.text:
-        rgrep = RGrep(args.pattern, args.text)
-        print rgrep.get_match()
+        if args.count:
+            print rgrep.get_count()
+        else:
+            print rgrep.get_match()
+
+
 
 
 if __name__ == '__main__':
