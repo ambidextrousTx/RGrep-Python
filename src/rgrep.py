@@ -157,11 +157,15 @@ def main(args):
     parser.add_argument('text', help='The text in which to search')
     parser.add_argument('--count', help='Get the count of the matches',
                         action='store_true')
+    parser.add_argument('--exact', help='Only exact matches',
+                        action='store_true')
     args = parser.parse_args()
     rgrep = RGrep(args.pattern, args.text)
     if args.pattern and args.text:
         if args.count:
             print rgrep.get_count()
+        elif args.exact:
+            print rgrep.get_exact_match()
         else:
             print rgrep.get_match()
 
