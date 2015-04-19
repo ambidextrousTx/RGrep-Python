@@ -161,6 +161,8 @@ def main(args):
                         action='store_true')
     parser.add_argument('-i', help='Case insensitive matches allowed',
                         action='store_true')
+    parser.add_argument('--lines', help='Get the line numbers that match',
+                        action='store_true')
     args = parser.parse_args()
     rgrep = RGrep(args.pattern, args.text)
     if args.pattern and args.text:
@@ -170,6 +172,8 @@ def main(args):
             print rgrep.get_exact_match()
         elif args.i:
             print rgrep.get_match_case_insensitive()
+        elif args.lines:
+            print rgrep.get_line_numbers()
         else:
             print rgrep.get_match()
 
