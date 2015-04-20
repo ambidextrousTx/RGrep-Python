@@ -168,14 +168,13 @@ def main(args):
     if args.pattern and args.text:
         if args.count:
             print rgrep.get_count()
-        elif args.exact:
+        if args.exact:
             print rgrep.get_exact_match()
-        elif args.i:
+        if args.i:
             print rgrep.get_match_case_insensitive()
-        elif args.lines:
+        if args.lines:
             print rgrep.get_line_numbers()
-        else:
-            print rgrep.get_match()
+        print rgrep.get_match()
 
 
 
